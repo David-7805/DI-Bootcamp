@@ -51,6 +51,7 @@ if name_entered == "David":
 else:
     print(f'{name_entered} is a nice name too!')
 
+# Exercise 9
 height = input("Please enter your height in cm: ")
 if int(height) > 145:
     print("You are tall enough to ride : )")

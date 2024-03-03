@@ -1,3 +1,4 @@
+# 1
 entered_string = input("Please enter a string of exactly ten characters: ")
 if len(entered_string) < 10:
   print("string not long enough")
@@ -6,8 +7,10 @@ elif len(entered_string) > 10:
 else:
   print("perfect string")
 
+# 2
 print(entered_string[0], entered_string[-1])
 
+# 3
 output_string = ''
 for letter in entered_string:
   output_string += letter

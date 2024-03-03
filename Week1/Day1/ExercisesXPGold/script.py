@@ -1,5 +1,7 @@
+# Exercise 1
 print("Hello world\n" * 4 + "I love python\n" * 4)
 
+# Exercise 2
 given_month = input("Please enter the month (1 to 12): ")
 if 3 <= int(given_month) <= 5:
     print("Spring")
