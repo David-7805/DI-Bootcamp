@@ -1,5 +1,5 @@
 # Exercise 1
-print("Hello world\nHello world\nHello world\nHello world")
+print("Hello world\n" * 4)
 
 # Exercise 2
 some_math = (99 ** 3) * 8
@@ -9,6 +9,8 @@ print(some_math)
 def predict(statement, prediction):
     if statement == prediction:
         print(f"{prediction} was the right prediction")
+    else:
+        print(f"{prediction} was the wrong prediction")
 
 predict(5 < 3, False)
 predict(3 == 3, True)
