@@ -108,7 +108,7 @@ def age_checker(list_of_names):
   names_for_removal = []
   for person in list_of_names:
     age = input(f'Dear {person}, please enter your age: ')
-    if int(age) < 21:
+    if int(age) < 21: # Assuming that if restricted for 16 to 21 it is also restricted for under 16
       names_for_removal.append(person)
   for person in names_for_removal:
     names.remove(person)
