@@ -30,11 +30,11 @@ print(basket)
 # 1. A float is a number that contains decimals
 # 2.
 list_of_floats = []
-for number in range(3, 11):
-  half_of_number = number / 2
-  if half_of_number == int(half_of_number):
-    half_of_number = int(half_of_number)
-  list_of_floats.append(half_of_number)
+for integer in range(3, 11):
+  half_of_integer = integer / 2
+  if half_of_integer == int(half_of_integer):
+    half_of_integer = int(half_of_integer)
+  list_of_floats.append(half_of_integer)
 print(list_of_floats)
 
 # 3.
@@ -47,3 +47,71 @@ while number <= 4.5:
   list_of_floats_2.append(number)
 print(list_of_floats_2)
 
+# Exercise 5
+# 1.
+for number in range(20):
+  print(number + 1)
+
+# 2.
+for number in range(20):
+  if (number + 1) % 2 == 0:
+    print(number + 1)
+
+# Exercise 6
+my_name = "David"
+username = "Whatever"
+while username != my_name:
+  username = input("Please enter your name starting with a capital letter: ")
+
+# Exercise 7
+favorite_fruits = input("Please enter your favorite fruits separated with a single space: ")
+favorite_fruits = favorite_fruits.lower()
+list_of_favorite_fruits = favorite_fruits.split(' ')
+any_fruit = input("Please enter the name of any fruit: ")
+if any_fruit.lower() in list_of_favorite_fruits:
+  print("You chose one of your favorite fruits")
+else:
+  print("You chose a new fruit. I hope you enjoy.")
+
+# Exercise 8
+pizza_toppings = []
+while True:
+  pizza_topping = input("Please enter the pizza topping you wanna add or 'quit' to move on with your order: ")
+  if pizza_topping == 'quit':
+    break
+  else:
+    print(f"We'll add {pizza_topping} to your pizza.")
+    pizza_toppings.append(pizza_topping)
+total_price = 10 + 2.5 * len(pizza_toppings)
+print(f"You'll get {pizza_toppings} for a total price of {total_price} euro.")
+
+# Exercise 9
+# 1. 2. 3.
+family = []
+total_cost = 0
+while True:
+  age = input("Please enter the age of the next person who wants to watch the movie or 'quit': ")
+  if age == 'quit':
+    break
+  else:
+    family.append(int(age))
+for member in family:
+  if 3 <= member < 12:
+    total_cost += 10
+  elif member >= 12:
+    total_cost += 15
+print(f'Your total cost is {total_cost} euro.')
+
+# 4.
+names = ["David", "Marija", "Manon"]
+def age_checker(list_of_names):
+  names_for_removal = []
+  for person in list_of_names:
+    age = input(f'Dear {person}, please enter your age: ')
+    if int(age) < 21:
+      names_for_removal.append(person)
+  for person in names_for_removal:
+    names.remove(person)
+  print(list_of_names)
+
+age_checker(names)
