@@ -115,3 +115,23 @@ def age_checker(list_of_names):
   print(list_of_names)
 
 age_checker(names)
+
+# Exercise 10
+sandwich_orders = ["Tuna sandwich", "Pastrami sandwich", "Avocado sandwich", "Pastrami sandwich", "Egg sandwich", "Chicken sandwich", "Pastrami sandwich"]
+
+order_number = 0
+while order_number < len(sandwich_orders):
+  if "Pastrami" in sandwich_orders[order_number]:
+    sandwich_orders.remove(sandwich_orders[order_number]) # after removing it is not necessary to add 1 to order_number
+  else:
+    order_number += 1
+print(sandwich_orders)
+
+finished_sandwiches = []
+while len(sandwich_orders) > 0:
+   sandwich_in_preparation = sandwich_orders.pop(0)
+   finished_sandwich = sandwich_in_preparation.lower()
+   finished_sandwiches.append(finished_sandwich)
+
+for sandwich in finished_sandwiches:
+  print(f'I made you a {sandwich}')
