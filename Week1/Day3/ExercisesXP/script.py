@@ -74,4 +74,34 @@ more_on_zara = {
 brand.update(more_on_zara)
 
 # 14.
-print(brand['number_stores']) # The value belonging to the key 'number stores', which was earlier set to 2, was updated with the new value of 10000
+print(brand['number_stores']) # The value belonging to the key 'number_stores', which was earlier set to 2, was updated with the new value of 10000
+
+# Exercise 4: Disney Characters
+users = ["Mickey", "Minnie", "Donald", "Ariel", "Pluto"]
+
+# 1.
+disney_users_A = {key: value for value, key in enumerate(users)}
+print(disney_users_A)
+
+# 2.
+disney_users_B = {key: value for key, value in enumerate(users)}
+print(disney_users_B)
+
+# 3.
+users_alphabetical = users.copy()
+users_alphabetical.sort()
+disney_users_C = {key: value for value, key in enumerate(users_alphabetical)}
+print(disney_users_C)
+
+# 4.1.
+disney_users_D = {key: value for value, key in enumerate(users) if 'i' in key or 'I' in key}
+print(disney_users_D)
+
+# 4.2.
+users_names_capitalized = [] # I want it to work also if the names are not capitalized
+for name in users:
+  name = name.capitalize()
+  users_names_capitalized.append(name)
+
+disney_users_E = {key: value for value, key in enumerate(users) if key[0] == 'm'.upper() or key[0] == 'p'.upper()}
+print(disney_users_E)
