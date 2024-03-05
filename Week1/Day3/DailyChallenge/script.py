@@ -30,6 +30,7 @@ def shop_calculator(product_range, budget):
     if string_to_number(product[1]) < budget:
       chosen_items.append(product[0])
       budget -= string_to_number(product[1])
+  chosen_items.sort()
   print(chosen_items) if len(chosen_items) > 0 else print('Nothing')
 
 
