@@ -192,7 +192,7 @@ def print_user_results(user_results):
 
 print_user_results(user_results)
 
-data = user_results[0] # Here I want to update the file data, with new wrong answers
-
+data = user_results[0] # Here I want to update the file data with new wrong answers
+print(data)
 
 
