@@ -1,4 +1,4 @@
-test_string = '7iiTsxh%?i #sM $a #t%^r!'
+matrix_string = '7iiTsxh%?i #sM $a #t%^r!'
 
 def from_string_to_grid(string, grid_width):
   list_of_substrings = []
@@ -34,6 +34,6 @@ def only_alpha_characters(string):
   print(string_to_output)
   return string_to_output
 
-grid = from_string_to_grid(test_string, 3)
+grid = from_string_to_grid(matrix_string, 3)
 possible_message = combiner_of_vertical_strings(grid)
 only_alpha_characters(possible_message)
