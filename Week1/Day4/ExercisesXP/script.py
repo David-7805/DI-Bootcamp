@@ -138,3 +138,61 @@ def main_3():
     print("It's very hot today. Choose thin clothing and make sure you drink enough.")
 
 main_3()
+
+# Exercise 8: Star Wars Quiz
+data = [
+    {
+        "question": "What is Baby Yoda's real name?",
+        "answer": "Grogu"
+    },
+    {
+        "question": "Where did Obi-Wan take Luke after his birth?",
+        "answer": "Tatooine"
+    },
+    {
+        "question": "What year did the first Star Wars movie come out?",
+        "answer": "1977"
+    },
+    {
+        "question": "Who built C-3PO?",
+        "answer": "Anakin Skywalker"
+    },
+    {
+        "question": "Anakin Skywalker grew up to be who?",
+        "answer": "Darth Vader"
+    },
+    {
+        "question": "What species is Chewbacca?",
+        "answer": "Wookiee"
+    }
+]
+
+def star_wars_quiz(data):
+    number_of_correct = 0
+    number_of_incorrect = 0
+    for item in data:
+        user_answer = input(item['question'])
+        if user_answer.title() == item["answer"].title():
+            number_of_correct += 1
+        else:
+            number_of_incorrect += 1
+            if 'wrong answers' not in item.keys(): # I want to store the wrong answers where the questions are, ideally so that the file data keeps track of all the wrong answers of every player"
+                item['wrong answers'] = [user_answer]
+            else:
+                item['wrong answers'].append(user_answer)
+
+    return [data, number_of_incorrect, number_of_correct]
+
+user_results = star_wars_quiz(data)
+
+# def update_data(data, user_results):
+
+def print_user_results(user_results):
+    print(f'You had {user_results[1]} wrong answers and {user_results[2]} right answers')
+
+print_user_results(user_results)
+
+data = user_results[0] # Here I want to update the file data, with new wrong answers
+
+
+
