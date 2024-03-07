@@ -9,7 +9,7 @@ def from_string_to_grid(string, grid_width):
       if len(substring) == grid_width:
         list_of_substrings.append(substring)
       else:
-        substring += '_' * (grid_width - len(substring))
+        substring += '_' * (grid_width - len(substring)) # I need to add characters to the latest substring if its length < grid_width to prevent an index error in the function vertical_reader
         list_of_substrings.append(substring)
   return list_of_substrings
 
@@ -25,7 +25,7 @@ def combiner_of_vertical_strings(grid):
   for position in range(substring_length):
     vertical_string = vertical_reader(grid, position)
     if vertical_string[-1] == '_':
-      result += vertical_string[:-1]
+      result += vertical_string[:-1] # Here I remove the earlier added '_' characters. The problem that I haven't solved, involves cases when a naturally occurring '_' happens to be at this latest position of vertical_string.
     else:
       result += vertical_string
   return result
@@ -42,11 +42,19 @@ def only_alpha_characters(string):
   print(string_to_output)
   return string_to_output
 
-three_row_grid = from_string_to_grid(matrix_string, 3)
-possible_message_3 = combiner_of_vertical_strings(three_row_grid)
-only_alpha_characters(possible_message_3)
+def secret_message_finder(string, grid_width):
+  grid = from_string_to_grid(string, grid_width)
+  possible_message = combiner_of_vertical_strings(grid)
+  only_alpha_characters(possible_message)
 
-four_row_grid = from_string_to_grid(matrix_string, 4)
-possible_message_4 = combiner_of_vertical_strings(four_row_grid)
-only_alpha_characters(possible_message_4)
-
+secret_message_finder(matrix_string, 2)
+secret_message_finder(matrix_string, 3) # Prints an understandable message
+secret_message_finder(matrix_string, 4)
+secret_message_finder(matrix_string, 5)
+secret_message_finder(matrix_string, 6)
+secret_message_finder(matrix_string, 7)
+secret_message_finder(matrix_string, 8)
+secret_message_finder(matrix_string, 9)
+secret_message_finder(matrix_string, 10)
+secret_message_finder(matrix_string, 11)
+secret_message_finder(matrix_string, 12)
