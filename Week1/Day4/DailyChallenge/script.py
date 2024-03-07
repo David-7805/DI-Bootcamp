@@ -6,7 +6,11 @@ def from_string_to_grid(string, grid_width):
   for iteration in range(number_of_substrings):
     substring = string[iteration * grid_width: (iteration + 1) * grid_width]
     if substring != '':
-      list_of_substrings.append(substring)
+      if len(substring) == grid_width:
+        list_of_substrings.append(substring)
+      else:
+        substring += '_' * (grid_width - len(substring))
+        list_of_substrings.append(substring)
   return list_of_substrings
 
 def vertical_reader(grid, index):
@@ -19,7 +23,11 @@ def combiner_of_vertical_strings(grid):
   result = ''
   substring_length = len(grid[0])
   for position in range(substring_length):
-    result += vertical_reader(grid, position)
+    vertical_string = vertical_reader(grid, position)
+    if vertical_string[-1] == '_':
+      result += vertical_string[:-1]
+    else:
+      result += vertical_string
   return result
 
 def only_alpha_characters(string):
@@ -34,6 +42,11 @@ def only_alpha_characters(string):
   print(string_to_output)
   return string_to_output
 
-grid = from_string_to_grid(matrix_string, 3)
-possible_message = combiner_of_vertical_strings(grid)
-only_alpha_characters(possible_message)
+three_row_grid = from_string_to_grid(matrix_string, 3)
+possible_message_3 = combiner_of_vertical_strings(three_row_grid)
+only_alpha_characters(possible_message_3)
+
+four_row_grid = from_string_to_grid(matrix_string, 4)
+possible_message_4 = combiner_of_vertical_strings(four_row_grid)
+only_alpha_characters(possible_message_4)
+
