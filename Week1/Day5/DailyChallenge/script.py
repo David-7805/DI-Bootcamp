@@ -2,8 +2,8 @@
 def string_sorter(original_string, delimiter):
   list_original = original_string.split(delimiter)
   list_lowercase = [word.lower() for word in list_original] # I want words containing capital letters to be sorted appropriately
-  lowercase_original_zipped = zip(list_lowercase, list_original) # But I don't want to lose the original words
-  dictionary_lowercase_to_original = {lowercase: original for lowercase, original in lowercase_original_zipped}
+  lowercase_and_original_zipped = zip(list_lowercase, list_original) # But I don't want to lose the original words
+  dictionary_lowercase_to_original = {lowercase: original for lowercase, original in lowercase_and_original_zipped}
   list_lowercase.sort()
   list_original_sorted = [dictionary_lowercase_to_original[lowercase_word] for lowercase_word in list_lowercase]
   sorted_string = delimiter.join(list_original_sorted)
