@@ -14,7 +14,7 @@ class Farm:
         for animal, amount in self.animals.items():
             print(f'{animal} : {amount}')
         print('\n    E-I-E-I-0!')
-        return '' # Oddly enough it prints the return statement (or 'None') to the screen
+        return '' # If you want me to print(macdonald.get_info()) the method must return '', or else 'None' will be printed.
 
     def get_animal_types(self):
         list_of_animal_types = list(self.animals.keys())
