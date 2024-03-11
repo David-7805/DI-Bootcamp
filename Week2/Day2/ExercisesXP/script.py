@@ -132,4 +132,7 @@ if __name__=='__main__':
     incredibles = TheIncredibles(members_incredibles, "Incredibles")
     incredibles.incredible_presentation()
     incredibles.born(name = "Baby Jack", age = 0, gender = 'Male', is_child = True, power = 'unknown power', incredible_name = 'Jack-Jack')
+
     incredibles.incredible_presentation()
+    incredibles.use_power('Sarah')
+    incredibles.use_power("Baby Jack")

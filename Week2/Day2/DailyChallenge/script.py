@@ -7,7 +7,7 @@ class Pagination:
         self.current_page = 1
 
     def total_pages(self):
-        return ceil(len(self.items) / self.page_size) # rounds to the nearest integer that is higher
+        return ceil(len(self.items) / self.page_size) # rounds to the nearest higher integer
 
     def pagination(self):
         dict_of_pages = {}
@@ -50,17 +50,19 @@ alphabetList = list("abcdefghijklmnopqrstuvwxyz")
 
 p = Pagination(alphabetList, 4)
 
+print(p.total_pages())
 print(p.get_visible_items())
-p.next_page().next_page().next_page().next_page()
+p.next_page().next_page()
+print(p.get_visible_items())
 p.prev_page().prev_page()
 print(p.get_visible_items())
 p.first_page()
 print(p.get_visible_items())
 p.last_page()
 print(p.get_visible_items())
-for i in range(1, p.total_pages() + 1):
+for i in range(0, p.total_pages() + 2): # includes also 2 non-existing pages
     p.go_to_page(i)
-    print(p.get_visible_items)
+    print(p.get_visible_items())
 
 
 
