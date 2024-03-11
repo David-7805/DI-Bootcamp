@@ -21,7 +21,6 @@ class Farm:
         list_of_animal_types.sort()
         return list_of_animal_types
 
-
     def get_short_info(self):
         print(f"{self.name}'s farm has ", end='')
         def how_to_display(animal):
