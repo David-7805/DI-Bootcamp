@@ -124,6 +124,7 @@ if __name__=='__main__':
     print(family_palin.is_18('Sarah'))
     family_palin.family_presentation()
 
+    # Exercise 5
     members_incredibles = [
         {'name':'Michael','age':35,'gender':'Male','is_child':False,'power': 'fly','incredible_name':'MikeFly'},
         {'name':'Sarah','age':32,'gender':'Female','is_child':False,'power': 'read minds','incredible_name':'SuperWoman'}
@@ -135,4 +136,4 @@ if __name__=='__main__':
 
     incredibles.incredible_presentation()
     incredibles.use_power('Sarah')
-    incredibles.use_power("Baby Jack")
+    incredibles.use_power("Baby Jack") # should raise an error
