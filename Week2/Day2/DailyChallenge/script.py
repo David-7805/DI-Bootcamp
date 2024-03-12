@@ -5,6 +5,7 @@ class Pagination:
         self.items = items
         self.page_size = round(page_size)
         self.current_page = 1
+        self.dict_of_pages = self.pagination()
 
     def total_pages(self):
         return ceil(len(self.items) / self.page_size) # rounds to the nearest higher integer
@@ -17,7 +18,7 @@ class Pagination:
         return dict_of_pages
 
     def get_visible_items(self):
-        return self.pagination()[self.current_page]
+        return self.dict_of_pages[self.current_page]
 
     def prev_page(self):
         self.current_page -= 1
