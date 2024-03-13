@@ -6,10 +6,10 @@ class Circle:
         self.diameter = self.radius * 2
 
     def area(self):
-        return pi * self.radius ** 2
+        return pi * (self.radius ** 2)
 
     def __str__(self):
-        return f'The circle has a radius of {self.radius} and a diameter of {self.diameter}.'
+        return f'Circle object with radius {self.radius} and diameter {self.diameter}.'
 
     def __add__(self, another_circle):
         area_new_circle = self.area() + another_circle.area()
@@ -23,12 +23,14 @@ class Circle:
         return self.radius == another_circle.radius
 
     def sort_circles(self, *circles):
-        list_of_circles_by_radius = [(self.radius, self)]
+        list_of_circles_by_radius = [(self.radius, str(self))]
         for circle in circles:
-            list_of_circles_by_radius.append((circle.radius, circle))
+            list_of_circles_by_radius.append((circle.radius, str(circle)))
         list_of_circles_by_radius.sort()
-        return list_of_circles_by_radius
-
+        sorted_list_of_circles = []
+        for circle in list_of_circles_by_radius:
+            sorted_list_of_circles.append(circle[1])
+        return sorted_list_of_circles
 
 
 circle_1 = Circle(4)
@@ -41,7 +43,7 @@ print(circle_1 > circle_2)
 print(circle_1 == circle_2)
 circle_4 = Circle(4)
 print(circle_1.sort_circles(circle_2, circle_3, circle_4))
-list_of_circles = [circle_1]
+
 
 
 

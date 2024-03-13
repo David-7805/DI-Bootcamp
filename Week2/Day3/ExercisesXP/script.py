@@ -1,7 +1,7 @@
 from string import ascii_letters
 from random import choices
 import datetime
-# from faker import Faker
+from faker import Faker
 
 # Exercise 1: Currencies
 
@@ -86,9 +86,9 @@ time_to_new_year(2026)
 
 # Exercise 6 : Birthday And Minutes
 def minutes_lived(birth_year, birth_month, birth_day):
-    birthdate = datetime.date(birth_year, birth_month, birth_day)
+    birth_date = datetime.date(birth_year, birth_month, birth_day)
     current_date = datetime.date.today()
-    time_lived = current_date - birthdate
+    time_lived = current_date - birth_date
     list_of_time_lived = str(time_lived).split(' ') # String '16739 days, 0:00:00' is being split, I only need the first part
     days_lived = int(list_of_time_lived[0])
     minutes_lived = days_lived * 24 * 60
@@ -97,9 +97,20 @@ def minutes_lived(birth_year, birth_month, birth_day):
 minutes_lived(1978, 5, 14)
 
 # Exercise 7 : Faker Module
-# fake = Faker()
-users = []
+def fake_persons_creator(amount):
+    locale_list = ['he', 'en_US', 'en_GB', 'es_MX', 'de', 'fr', 'ru']
+    users = []
+    for number in range(10):
+        locale = choices(locale_list, k = 1)
+        fake = Faker(locale)
+        dict_of_fake_persons = {}
+        dict_of_fake_persons['name'] = fake.name()
+        dict_of_fake_persons['address'] = fake.address()
+        dict_of_fake_persons['language code'] = locale
+        users.append(dict_of_fake_persons)
+    return users
 
+print(fake_persons_creator(10))
 
 
 
