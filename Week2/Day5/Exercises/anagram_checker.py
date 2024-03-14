@@ -29,8 +29,9 @@ class AnagramChecker:
         return (word.lower() in self.existing_words)
 
     def get_anagrams(self, word):
-        potential_anagrams = ["".join(permutation) for permutation in permutations(word.lower())]
-        anagrams = [potential_anagram for potential_anagram in potential_anagrams if potential_anagram in self.existing_words and potential_anagram != word.lower()]
+        anagrams = [existing_word for existing_word in self.existing_words if len(existing_word) == len(word) and AnagramChecker.is_anagram(existing_word, word)]
+        # potential_anagrams = ["".join(permutation) for permutation in permutations(word.lower())]
+        # anagrams = [potential_anagram for potential_anagram in potential_anagrams if potential_anagram in self.existing_words and potential_anagram != word.lower()]
         return anagrams
 
 
