@@ -19,7 +19,7 @@ class Text:
         if word in self.dict_of_frequencies:
             return self.dict_of_frequencies[word]
         else:
-            return f'The word {word} does not occur in the text'
+            return f'The word {word} does not occur in the text.'
 
     def most_common_word(self):
         highest_frequency = 0
@@ -49,5 +49,6 @@ class Text:
 the_stranger = Text.from_file(r'C:\Users\pasha\PycharmProjects\DI-Bootcamp\Week2\Day4\DailyChallenge\the_stranger.txt')
 
 print(the_stranger.word_frequency('stranger'))
+print(the_stranger.word_frequency('non-word'))
 print(the_stranger.most_common_word())
 print(the_stranger.unique_words())
