@@ -14,45 +14,45 @@ class Deck:
         for suit in ['Hearts', 'Diamonds', 'Clubs', 'Spades']:
             for value in ['A',2,3,4,5,6,7,8,9,10,'J','Q','K']:
                 complete_deck.append(Card(suit, value))
-        self.cards_in_game = complete_deck
-        self.cards_no_longer_in_game = []
+        self.cards_to_deal = complete_deck
+        self.cards_dealt = []
 
     def shuffle(self):
-        random.shuffle(self.cards_in_game)
+        random.shuffle(self.cards_to_deal)
 
     def deal(self):
-        index_card_to_deal = random.randint(0, len(self.cards_in_game) - 1) # - 1 because randint is inclusive and I don't want to pop a card that is out of range
-        self.cards_no_longer_in_game.append(self.cards_in_game.pop(index_card_to_deal))
-        print(self.cards_no_longer_in_game[-1])
+        index_card_to_deal = random.randint(0, len(self.cards_to_deal) - 1) # - 1 because randint is inclusive and I don't want to pop a card that is out of range
+        self.cards_dealt.append(self.cards_to_deal.pop(index_card_to_deal))
+        print(self.cards_dealt[-1])
 
     def new_game(self):
-        self.cards_in_game.extend(self.cards_no_longer_in_game)
-        self.cards_no_longer_in_game = []
+        self.cards_to_deal.extend(self.cards_dealt)
+        self.cards_dealt = []
 
 
 my_deck = Deck()
-print(len(my_deck.cards_in_game)) # prints the number of cards in my_deck
-for card in my_deck.cards_in_game:
-    print(card, end = '; ') # prints all the cards in my deck
+print(len(my_deck.cards_to_deal)) # prints the number of cards to deal in my_deck
+for card in my_deck.cards_to_deal:
+    print(card, end = '; ') # prints all the cards to deal in my deck
 print()
 my_deck.shuffle()
-for card in my_deck.cards_in_game:
-    print(card, end = '; ') # prints all the cards in my deck after I shuffled
+for card in my_deck.cards_to_deal:
+    print(card, end = '; ') # prints all the cards to deal in my deck after I shuffled
 print()
 my_deck.deal()
-print(len(my_deck.cards_in_game))
-print(len(my_deck.cards_no_longer_in_game))
+print(len(my_deck.cards_to_deal))
+print(len(my_deck.cards_dealt))
 my_deck.deal()
 my_deck.deal()
-print(len(my_deck.cards_in_game))
-print(len(my_deck.cards_no_longer_in_game))
-for card in my_deck.cards_no_longer_in_game:
-    print(card, end = '; ') # prints all the cards no longer in the game
+print(len(my_deck.cards_to_deal))
+print(len(my_deck.cards_dealt))
+for card in my_deck.cards_dealt:
+    print(card, end = '; ') # prints all the cards that are already dealt
 print()
 my_deck.new_game()
-print(len(my_deck.cards_in_game))
-print(len(my_deck.cards_no_longer_in_game))
-for card in my_deck.cards_in_game:
+print(len(my_deck.cards_to_deal))
+print(len(my_deck.cards_dealt))
+for card in my_deck.cards_to_deal:
     print(card, end = '; ')
 print()
-print(len(set(my_deck.cards_in_game))) # to check that I have still 52 unique cards after starting a new game
+print(len(set(my_deck.cards_to_deal))) # to check that I have still 52 unique cards after starting a new game
