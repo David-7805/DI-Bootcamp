@@ -31,13 +31,13 @@ class Deck:
 
 
 my_deck = Deck()
-print(len(my_deck.cards_in_game))
+print(len(my_deck.cards_in_game)) # prints the number of cards in my_deck
 for card in my_deck.cards_in_game:
-    print(card, end = '; ')
+    print(card, end = '; ') # prints all the cards in my deck
 print()
 my_deck.shuffle()
 for card in my_deck.cards_in_game:
-    print(card, end = '; ')
+    print(card, end = '; ') # prints all the cards in my deck after I shuffled
 print()
 my_deck.deal()
 print(len(my_deck.cards_in_game))
@@ -46,6 +46,13 @@ my_deck.deal()
 my_deck.deal()
 print(len(my_deck.cards_in_game))
 print(len(my_deck.cards_no_longer_in_game))
+for card in my_deck.cards_no_longer_in_game:
+    print(card, end = '; ') # prints all the cards no longer in the game
+print()
 my_deck.new_game()
 print(len(my_deck.cards_in_game))
 print(len(my_deck.cards_no_longer_in_game))
+for card in my_deck.cards_in_game:
+    print(card, end = '; ')
+print()
+print(len(set(my_deck.cards_in_game))) # to check that I have still 52 unique cards after starting a new game
