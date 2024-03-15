@@ -5,27 +5,27 @@ def show_menu():
     print('(c) Check a word for its anagrams')
     print('(x) Exit')
 
-def input_menu():
-    is_in_menu = True
-    while is_in_menu:
+def anagram_finder():
+    program_is_running = True
+    while program_is_running:
         show_menu()
         user_input = input('\n>>>: ')
         if user_input == 'x':
-            is_in_menu = False
+            program_is_running = False
             print("Goodbye!")
         elif user_input == 'c':
-            word_to_be_validated = word_receiver()
-            if word_to_be_validated != 'Input not allowed.':
-                anagram_checking_obj = AnagramChecker(r'C:\Users\pasha\PycharmProjects\DI-Bootcamp\Week2\Day5\Exercises\english_word_list.txt')
-                if not anagram_checking_obj.is_valid_word(word_to_be_validated):
+            word_to_be_checked = user_word()
+            if word_to_be_checked != 'Input not allowed.':
+                anagram_checker = AnagramChecker(r'C:\Users\pasha\PycharmProjects\DI-Bootcamp\Week2\Day5\Exercises\english_word_list.txt')
+                if not anagram_checker.is_valid_word(word_to_be_checked):
                     print("The word you entered is not in our dictionary.")
                 else:
-                    anagrams = anagram_checking_obj.get_anagrams(word_to_be_validated)
-                    print(f'The anagrams of {word_to_be_validated}: {anagrams}')
+                    anagrams = anagram_checker.get_anagrams(word_to_be_checked)
+                    print_result(word_to_be_checked, anagrams)
         else:
             print("That's not a valid input. Please press 'c' or 'x'.")
 
-def word_receiver():
+def user_word():
     word_to_check = input('Please enter a word you would like to know the anagrams of: ')
     word_to_check = word_to_check.strip(' ')
     if len(word_to_check.split(' ')) > 1:
@@ -37,4 +37,17 @@ def word_receiver():
     else:
         return word_to_check
 
-input_menu()
+def print_result(word, anagram_list):
+    print(f'\nYOUR WORD: "{word.upper()}"')
+    print('This is a valid English word.')
+    if anagram_list == []:
+        print('Your word does not have any anagrams.')
+    else:
+        print(f'The anagrams of your word: ', end = '')
+        for anagram in anagram_list[: -1]:
+            print(f'{anagram}, ', end = '')
+        for anagram in anagram_list[-1 :]:
+            print(f'{anagram}.')
+
+
+anagram_finder()
