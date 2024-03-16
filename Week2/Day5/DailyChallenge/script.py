@@ -29,30 +29,29 @@ class Deck:
         self.cards_to_deal.extend(self.cards_dealt)
         self.cards_dealt = []
 
+    def show_deck(self):
+        print(f"{len(self.cards_to_deal)} cards not dealt yet:", end = ' ')
+        for card in self.cards_to_deal:
+            print(card, end = '; ')
+        print(f"\n{len(self.cards_dealt)} cards already dealt:", end = ' ')
+        for card in self.cards_dealt:
+            print(card, end = '; ')
+        print()
+
 
 my_deck = Deck()
-print(len(my_deck.cards_to_deal)) # prints the number of cards to deal in my_deck
-for card in my_deck.cards_to_deal:
-    print(card, end = '; ') # prints all the cards to deal in my deck
+my_deck.show_deck()
 print()
 my_deck.shuffle()
-for card in my_deck.cards_to_deal:
-    print(card, end = '; ') # prints all the cards to deal in my deck after I shuffled
+my_deck.show_deck()
 print()
 my_deck.deal()
-print(len(my_deck.cards_to_deal))
-print(len(my_deck.cards_dealt))
 my_deck.deal()
 my_deck.deal()
-print(len(my_deck.cards_to_deal))
-print(len(my_deck.cards_dealt))
-for card in my_deck.cards_dealt:
-    print(card, end = '; ') # prints all the cards that are already dealt
+print()
+my_deck.show_deck()
 print()
 my_deck.new_game()
-print(len(my_deck.cards_to_deal))
-print(len(my_deck.cards_dealt))
-for card in my_deck.cards_to_deal:
-    print(card, end = '; ')
+my_deck.show_deck()
 print()
-print(len(set(my_deck.cards_to_deal))) # to check that I have still 52 unique cards after starting a new game
+print(len(set(my_deck.cards_to_deal))) # to check that I still have 52 unique cards after starting a new game

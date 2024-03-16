@@ -28,9 +28,9 @@ class AnagramChecker:
 
     def get_anagrams(self, word):
         anagrams = [existing_word for existing_word in self.existing_words if len(existing_word) == len(word) and AnagramChecker.is_anagram(existing_word, word)]
-        # My previous method with permutations (see below) took extremely long to get anagrams for words with length 8,
-        # because it creates a list of 8*7*6*5*4*3*2*1 (= 40320) items to be created and checked. The code:
-        # potential_anagrams = ["".join(permutation) for permutation in permutations(word.lower())]
+        # My previous method with permutations (see below) took extremely long to get anagrams for words with length 8 (imagine if longer),
+        # because it creates a list of 8*7*6*5*4*3*2*1 (= 40320) items to be created and checked. The code was:
+        # potential_anagrams = [''.join(permutation) for permutation in permutations(word.lower())]
         # anagrams = [potential_anagram for potential_anagram in potential_anagrams if potential_anagram in self.existing_words and potential_anagram != word.lower()]
         return anagrams
 
