@@ -40,3 +40,8 @@
 -- SELECT first_name, last_name FROM students WHERE student_ID = 1 AND student_ID = 3;
 
 -- SELECT * FROM students WHERE birth_date >= '01-01-2000';
+
+-- Exercise XP Gold:
+-- SELECT first_name, last_name, birth_date FROM students ORDER BY last_name ASC LIMIT 4;
+-- SELECT first_name, last_name, birth_date FROM students ORDER BY birth_date DESC LIMIT 1;
+-- SELECT first_name, last_name, birth_date FROM students OFFSET 2 LIMIT 3;
