@@ -36,7 +36,7 @@
 -- VALUES ('Penelope', 'Cruz', 1); 'Gives the ERROR: INSERT has more target columns than expressions'
 
 -- INSERT INTO actors (first_name, last_name, oscars)
--- VALUES ('Penelope', 'Cruz', 1); 'Gives no error, because column birthdate accepts null values after it was dropped and then added again.'
+-- VALUES ('Penelope', 'Cruz', 1); 'Gives no error, because column birthdate accepts null values after it was dropped and then added again. See above what I did during class in the morning.'
 
 -- INSERT INTO actors (last_name, oscars, birthdate)
 -- VALUES ('Damon', 5, '08/10/1970'); 'Gives the ERROR: null value in column "first_name" of relation "actors" violates not-null constraint'
