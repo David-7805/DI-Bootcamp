@@ -1,3 +1,5 @@
+-- During class in the morning:
+
 -- create table actors(
 -- actor_id serial primary key,
 -- first_name varchar (50) not null,
@@ -21,12 +23,11 @@
 -- ALTER TABLE actors RENAME COLUMN birthday TO birthdate;
 -- DELETE FROM actors WHERE actor_id = 4 RETURNING first_name, last_name, oscars;
 
+
+-- Daily Challenge: Actors
+
 -- select COUNT(actor_id) from actors;
 -- SELECT * FROM actors;
--- INSERT INTO table (column1, column2, …)
--- VALUES
---     (value1, value2, …),
---     (value1, value2, …) ,...;
 
 -- INSERT INTO actors (first_name, last_name, oscars)
 -- VALUES ('Penelope', 'Cruz',  1, '28/04/1974'); 'Gives the ERROR: INSERT has more expressions than target columns'
