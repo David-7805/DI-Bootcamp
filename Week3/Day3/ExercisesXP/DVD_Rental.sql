@@ -1,0 +1,112 @@
+-- Database: dvdrental
+
+-- DROP DATABASE IF EXISTS dvdrental;
+
+-- CREATE DATABASE dvdrental
+--     WITH
+--     OWNER = postgres
+--     ENCODING = 'UTF8'
+--     LC_COLLATE = 'English_United Kingdom.1252'
+--     LC_CTYPE = 'English_United Kingdom.1252'
+--     LOCALE_PROVIDER = 'libc'
+--     TABLESPACE = pg_default
+--     CONNECTION LIMIT = -1
+--     IS_TEMPLATE = False;
+
+-- Exercise 1: DVD Rental
+-- 1.
+-- SELECT language_id, name AS language FROM language;
+-- 2.
+-- SELECT film.title, film.description, language.name AS language
+-- FROM film LEFT OUTER JOIN language
+-- ON film.language_id = language.language_id;
+-- 3.
+-- SELECT film.title, film.description, language.name AS language
+-- FROM film RIGHT OUTER JOIN language
+-- ON film.language_id = language.language_id;
+-- 4.
+-- CREATE TABLE new_film (
+--  id SERIAL PRIMARY KEY,
+--  name VARCHAR (100)
+-- )
+-- INSERT INTO new_film (name) VALUES ('The Dark Knight'),
+-- ('Django Unchained'), ('WALL-E'), ('Inglourious Bastards');
+-- 5.
+-- CREATE TABLE customer_review (
+-- review_id SERIAL PRIMARY KEY,
+-- film_id INTEGER REFERENCES new_film (id) ON DELETE CASCADE,
+-- language_id INTEGER REFERENCES language (language_id),
+-- title VARCHAR (100) NOT NULL,
+-- score SMALLINT NOT NULL,
+-- review_text TEXT NOT NULL,
+-- last_update TIMESTAMP NOT NULL
+-- )
+-- 6.
+-- INSERT INTO customer_review (film_id, language_id, title, score, review_text, last_update)
+-- VALUES (1, 1, 'Thrilling movie', 10, 'Thrilling movie, especially the scenes on the boats are memorable', '2024-03-19 16:54:30')
+-- INSERT INTO customer_review (film_id, language_id, title, score, review_text, last_update)
+-- VALUES (4, 1, 'Great alternate history', 8, 'Nice movie, it is always good to see nazis lose!', '2024-03-19 16:59:30')
+-- 7.
+-- SELECT * FROM customer_review;
+-- There are two reviews in customer_review.
+-- DELETE FROM new_film WHERE name = 'The Dark Knight';
+-- SELECT * FROM customer_review;
+-- Now there is only one review in customer_review.
+
+-- Exercise 2: DVD Rental
+-- 1.
+-- SELECT * FROM language;
+-- UPDATE film
+-- SET language_id = 4
+-- WHERE film_id % 7 = 0 AND film_id < 100;
+-- 2.
+-- The field <customer_id> of the payment table seems to be linked to the field email of the customer table.
+-- The field <customer_id> of the rental table is linked to the primary key <customer_id> of the customer table.
+-- So there are two foreign keys defined for the customer table linked to two different fields. Therefore we cannot
+-- have duplicate values in these fields, which are email and customer_id. So we should not insert an e-mail address
+-- or customer_id that is already in the customer table.
+-- 3.
+-- Dropping a table always requires checking. But the table customer_review has no foreign keys linked to it.
+-- So it shouldn't be a problem to drop this table.
+-- DROP TABLE IF EXISTS customer_review;
+-- 4.
+-- SELECT COUNT(rental_id) FROM rental WHERE return_date IS NULL;
+-- 5.
+-- SELECT film.title, film.rental_rate, rental.return_date
+-- FROM film RIGHT OUTER JOIN inventory ON film.film_id = inventory.film_id
+-- JOIN rental ON inventory.inventory_id = rental.inventory_id
+-- WHERE rental.return_date IS NULL ORDER BY rental_rate DESC LIMIT 30;
+-- 6.The 1st film : The film is about a sumo wrestler, and one of the
+-- actors is Penelope Monroe. -> 'Park Citizen'
+-- SELECT film.title, film.description, actor.first_name, actor.last_name
+-- FROM film JOIN film_actor ON film.film_id = film_actor.film_id
+-- JOIN actor ON film_actor.actor_id = actor.actor_ID WHERE film.description ILIKE '%sumo%'
+-- AND actor.first_name = 'Penelope' AND actor.last_name = 'Monroe';
+
+-- The 2nd film : A short documentary (less than 1 hour long), rated “R”. -> 'Cupboard Sinners'
+-- SELECT film.title, category.name, film.length, film.rating
+-- FROM film JOIN film_category ON film.film_id = film_category.film_id
+-- JOIN category ON film_category.category_id = category.category_id
+-- WHERE length < 60 AND rating = 'R' AND category.name = 'Documentary';
+
+-- The 3rd film : A film that his friend Matthew Mahan rented. He paid over $4.00 for the rental,
+-- and he returned it between the 28th of July and the 1st of August, 2005. -> Sugar Wonka
+-- SELECT film.title, customer.first_name, customer.last_name, film.rental_rate, rental.return_date FROM film
+-- JOIN inventory ON film.film_id = inventory.film_id
+-- JOIN rental ON inventory.inventory_id = rental.inventory_id
+-- JOIN customer ON rental.customer_id = customer.customer_id
+-- WHERE customer.first_name = 'Matthew' AND customer.last_name = 'Mahan'
+-- AND film.rental_rate > 4 AND rental.return_date BETWEEN '2005-07-28' AND '2005-08-01';
+
+-- The 4th film : His friend Matthew Mahan watched this film, as well. It had the word “boat” in the title or description,
+-- and it looked like it was a very expensive DVD to replace. -> Stone Fire (19.99) or Money Harold (17.99)
+-- SELECT film.title, customer.first_name, customer.last_name, film.description, film.replacement_cost
+-- FROM film JOIN inventory ON film.film_id = inventory.film_id
+-- JOIN rental ON inventory.inventory_id = rental.inventory_id
+-- JOIN customer ON rental.customer_id = customer.customer_id
+-- WHERE customer.first_name = 'Matthew' AND customer.last_name = 'Mahan'
+-- AND (film.title ILIKE '%boat%' OR film.description ILIKE '%boat%')
+-- ORDER BY film.replacement_cost DESC;
+
+
+
