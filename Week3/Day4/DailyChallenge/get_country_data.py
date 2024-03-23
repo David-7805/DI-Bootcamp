@@ -3,7 +3,6 @@ from random import choices
 import psycopg2
 
 response = requests.get('https://restcountries.com/v3.1/all?fields=name,capital,flag,subregion,population')
-print(response.status_code)
 list_of_countries = response.json()
 list_random_countries = choices(list_of_countries, k = 10)
 
